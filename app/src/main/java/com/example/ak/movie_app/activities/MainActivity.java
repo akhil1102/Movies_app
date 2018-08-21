@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.ak.movie_app.BuildConfig;
-import com.example.ak.movie_app.dataHandlers.Movie;
+import com.example.ak.movie_app.models.Movie;
 import com.example.ak.movie_app.R;
 import com.example.ak.movie_app.adapters.ViewPagerAdapter;
 import com.example.ak.movie_app.fragments.MovieFragment_tab1;

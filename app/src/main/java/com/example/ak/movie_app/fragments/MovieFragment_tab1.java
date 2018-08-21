@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.example.ak.movie_app.dataHandlers.Movie;
+import com.example.ak.movie_app.models.Movie;
 import com.example.ak.movie_app.adapters.MyMovieRecyclerViewAdapter;
 import com.example.ak.movie_app.R;
 

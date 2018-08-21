@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ak.movie_app.dataHandlers.Movie;
+import com.example.ak.movie_app.models.Movie;
 import com.example.ak.movie_app.activities.DetailedMoviesActivity;
 import com.example.ak.movie_app.R;
 import com.squareup.picasso.Picasso;
