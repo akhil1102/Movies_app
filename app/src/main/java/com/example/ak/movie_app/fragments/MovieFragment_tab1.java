@@ -16,11 +16,12 @@ import com.example.ak.movie_app.R;
 
 import java.util.ArrayList;
 
-public class MovieFragment_tab1 extends Fragment {
+public class MovieFragment_tab1 extends Fragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 3;
     private static ArrayList<Movie> movies_list = new ArrayList<>();
+    private OnListFragmentInteractionListener mListener;
 
     public static ArrayList<Movie> getMovies_list() {
         return movies_list;
@@ -61,6 +62,7 @@ public class MovieFragment_tab1 extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -70,9 +72,10 @@ public class MovieFragment_tab1 extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener = null;
     }
 
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+    public interface OnListFragmentInteractionListener {
+
     }
 }

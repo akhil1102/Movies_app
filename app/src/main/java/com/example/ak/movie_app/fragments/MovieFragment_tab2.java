@@ -20,6 +20,7 @@ public class MovieFragment_tab2 extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 3;
+    private OnListFragmentInteractionListener mListener;
 
     private static List<Movie> movies_list;
 
@@ -60,6 +61,7 @@ public class MovieFragment_tab2 extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -69,6 +71,7 @@ public class MovieFragment_tab2 extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener = null;
     }
 
     public interface OnListFragmentInteractionListener {

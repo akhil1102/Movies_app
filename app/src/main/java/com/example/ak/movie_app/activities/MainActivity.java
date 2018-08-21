@@ -31,7 +31,10 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity
+        implements MovieFragment_tab1.OnListFragmentInteractionListener,
+        MovieFragment_tab2.OnListFragmentInteractionListener,
+        MovieFragment_tab3.OnListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
