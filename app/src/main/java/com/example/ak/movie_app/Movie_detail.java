@@ -13,7 +13,7 @@ public class Movie_detail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_detail);
+        setContentView(R.layout.activity_movie_detail);
         if(getIntent().hasExtra("image_url") && getIntent().hasExtra("title")){
             String image_url = getIntent().getStringExtra("image_url");
             String title = getIntent().getStringExtra("title");
