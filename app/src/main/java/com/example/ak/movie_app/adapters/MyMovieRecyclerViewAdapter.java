@@ -1,4 +1,4 @@
-package com.example.ak.movie_app;
+package com.example.ak.movie_app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,24 +10,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ak.movie_app.MovieFragment_tab2.OnListFragmentInteractionListener;
-import com.example.ak.movie_app.dummy.DummyContent.DummyItem;
+import com.example.ak.movie_app.dataHandlers.Movie;
+import com.example.ak.movie_app.activities.DetailedMoviesActivity;
+import com.example.ak.movie_app.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecyclerViewAdapter.ViewHolder> {
 
-//    private final List<DummyItem> mValues;
-//    private final OnListFragmentInteractionListener mListener;
 
-    List<Movie> movies_list;
-    Context mContext;
+    private List<Movie> movies_list;
+    private Context mContext;
 
     public MyMovieRecyclerViewAdapter(List<Movie> movies, Context mContext) {
         movies_list = movies;
@@ -42,10 +37,6 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-//        holder.mItem = mValues.get(position);
-//        holder.mIdView.setText(mValues.get(position).id);
-//        holder.mContentView.setText(mValues.get(position).content);
-
         holder.title.setText(movies_list.get(position).getTitle());
         Picasso.get().load(movies_list.get(position).getImage_url()).into(holder.image);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +44,7 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
             public void onClick(View v) {
 
                 Log.d("clicked","clicked");
-                Intent intent = new Intent(mContext, Movie_detail.class);
+                Intent intent = new Intent(mContext, DetailedMoviesActivity.class);
                 intent.putExtra("image_url",movies_list.get(position).getImage_url());
                 intent.putExtra("title",movies_list.get(position).getTitle());
                 mContext.startActivity(intent);
@@ -67,25 +58,13 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
         return movies_list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public final View mView;
-//        public final TextView mIdView;
-//        public final TextView mContentView;
-//        public DummyItem mItem;
-
+    class ViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private ImageView image;
-
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
-//            mView = view;
             title = view.findViewById(R.id.tv_title);
             image = view.findViewById(R.id.poster);
         }
-
-//        @Override
-//        public String toString() {
-//            return super.toString() + " '" + mContentView.getText() + "'";
-//        }
     }
 }

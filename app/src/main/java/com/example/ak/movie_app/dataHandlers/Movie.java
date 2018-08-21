@@ -1,4 +1,4 @@
-package com.example.ak.movie_app;
+package com.example.ak.movie_app.dataHandlers;
 
 
 public class Movie {

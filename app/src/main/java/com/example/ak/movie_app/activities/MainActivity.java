@@ -1,19 +1,23 @@
-package com.example.ak.movie_app;
+package com.example.ak.movie_app.activities;
 
 import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.GridView;
-import android.widget.ListView;
 
-import com.example.ak.movie_app.dummy.DummyContent;
+import com.example.ak.movie_app.BuildConfig;
+import com.example.ak.movie_app.dataHandlers.Movie;
+import com.example.ak.movie_app.R;
+import com.example.ak.movie_app.adapters.ViewPagerAdapter;
+import com.example.ak.movie_app.fragments.MovieFragment_tab1;
+import com.example.ak.movie_app.fragments.MovieFragment_tab2;
+import com.example.ak.movie_app.fragments.MovieFragment_tab3;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,11 +31,8 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity implements MovieFragment_tab1.OnListFragmentInteractionListener, MovieFragment_tab2.OnListFragmentInteractionListener, MovieFragment_tab3.OnListFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity{
 
-    private ListView listView ;
-    private MovieAdapter mAdapter;
-    private GridView gridView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,41 +54,6 @@ public class MainActivity extends AppCompatActivity implements MovieFragment_tab
         new GetData().execute(final_urls);
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
-
-
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.menu, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-
-//        switch(item.getItemId()){
-//            case R.id.Grid:
-//                //make grid
-//                gridView = findViewById(R.id.grid_view);
-//                gridView.setVisibility(View.VISIBLE);
-//                listView.setVisibility(View.GONE);
-//                return true;
-//
-//            case R.id.List:
-//                //make list
-//                listView.setVisibility(View.VISIBLE);
-//                gridView.setVisibility(View.GONE);
-//                return true;
-//
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
     private class GetData extends AsyncTask<String[], Void, ArrayList<ArrayList<Movie>>> {
 
         //image path constants, can be used to change image size
@@ -100,16 +66,15 @@ public class MainActivity extends AppCompatActivity implements MovieFragment_tab
         @Override
         protected ArrayList<ArrayList<Movie>> doInBackground(String[]... params){
 
-            URLConnection uc = null;
+            URLConnection uc;
             HttpsURLConnection httpconnection = null;
 
             String[] url_array = params[0];
             ArrayList<ArrayList<Movie>> all_movies = new ArrayList<>();
-            for(int i=0; i<url_array.length; i++) {
-                ArrayList<Movie> movies_list = new ArrayList<Movie>();
-                String url = url_array[i];
+            for (String anUrl_array : url_array) {
+                ArrayList<Movie> movies_list = new ArrayList<>();
                 try {
-                    URL u = new URL(url);
+                    URL u = new URL(anUrl_array);
                     uc = u.openConnection();
                     httpconnection = (HttpsURLConnection) uc;
                     int responseCode = httpconnection.getResponseCode();
@@ -118,12 +83,12 @@ public class MainActivity extends AppCompatActivity implements MovieFragment_tab
                     BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"), 8);
                     StringBuilder sBuilder = new StringBuilder();
 
-                    String line = null;
+                    String line;
                     while ((line = bReader.readLine()) != null) {
-                        sBuilder.append(line + "\n");
+                        sBuilder.append(line).append("\n");
                     }
 
-                    Log.d("url", url);
+                    Log.d("url", anUrl_array);
                     inputStream.close();
                     String result = sBuilder.toString();
                     JSONObject json = new JSONObject(result);
@@ -147,7 +112,9 @@ public class MainActivity extends AppCompatActivity implements MovieFragment_tab
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    httpconnection.disconnect();
+                    if (httpconnection != null) {
+                        httpconnection.disconnect();
+                    }
 
                 }
 

@@ -1,4 +1,4 @@
-package com.example.ak.movie_app;
+package com.example.ak.movie_app.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,9 +6,10 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ak.movie_app.R;
 import com.squareup.picasso.Picasso;
 
-public class Movie_detail extends AppCompatActivity {
+public class DetailedMoviesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

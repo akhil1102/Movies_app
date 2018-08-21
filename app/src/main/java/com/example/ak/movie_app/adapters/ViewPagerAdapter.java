@@ -1,12 +1,13 @@
-package com.example.ak.movie_app;
+package com.example.ak.movie_app.adapters;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
-import java.util.ArrayList;
+import com.example.ak.movie_app.fragments.MovieFragment_tab1;
+import com.example.ak.movie_app.fragments.MovieFragment_tab2;
+import com.example.ak.movie_app.fragments.MovieFragment_tab3;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
