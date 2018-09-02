@@ -1,8 +1,7 @@
 package com.example.ak.movie_app.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ public class DetailedMoviesActivity extends AppCompatActivity {
         if(getIntent().hasExtra("image_url") && getIntent().hasExtra("title")){
             String image_url = getIntent().getStringExtra("image_url");
             String title = getIntent().getStringExtra("title");
-            Log.d("title from intent","title"+title);
             setViews(image_url, title);
         }
     }
@@ -26,7 +24,6 @@ public class DetailedMoviesActivity extends AppCompatActivity {
     private void setViews(String image_url, String title){
         TextView title_detail = findViewById(R.id.title_detail);
         title_detail.setText(title);
-        Log.d("setting image and title","title"+title);
         ImageView imageView_detail = findViewById(R.id.poster_detail);
         Picasso.get().load(image_url).into(imageView_detail);
     }

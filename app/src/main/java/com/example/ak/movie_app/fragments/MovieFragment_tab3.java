@@ -41,10 +41,12 @@ public class MovieFragment_tab3 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            movies_list = getArguments().getParcelableArrayList("movies_list");
+        if (savedInstanceState != null) {
+            movies_list = savedInstanceState.getParcelableArrayList("movies_list");
         }
-        fetchData();
+        else {
+            fetchData();
+        }
     }
 
     private void fetchData() {

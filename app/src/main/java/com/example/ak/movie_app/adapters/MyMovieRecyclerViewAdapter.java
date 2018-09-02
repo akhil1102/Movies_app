@@ -3,7 +3,6 @@ package com.example.ak.movie_app.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,6 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
             @Override
             public void onClick(View v) {
 
-                Log.d("clicked", "clicked");
                 Intent intent = new Intent(mContext, DetailedMoviesActivity.class);
                 intent.putExtra("image_url", movies_list.get(position).getPoster_path());
                 intent.putExtra("title", movies_list.get(position).getTitle());
