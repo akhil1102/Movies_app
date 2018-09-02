@@ -1,15 +1,12 @@
-package com.example.ak.movie_app.interfaces;
+package com.example.ak.movie_app.networkHandlers;
 
-import com.example.ak.movie_app.models.Movie;
 import com.example.ak.movie_app.models.MovieResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface MovieApiService {
+public interface APIInterface {
 
     @GET("movie/now_playing")
     Call<MovieResponse> getNowPlayingMovies(@Query("api_key") String apiKey);

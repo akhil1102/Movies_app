@@ -2,29 +2,33 @@ package com.example.ak.movie_app.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieResponse {
 
-
-    @SerializedName("results")
-    private List<Movie> results = null;
-
     @SerializedName("page")
     private int page;
-
     @SerializedName("total_results")
     private int total_results;
-
+    @SerializedName("dates")
+    private Dates dates;
     @SerializedName("total_pages")
     private int total_pages;
+    @SerializedName("results")
+    private List<Movie> results;
 
-    public List<Movie> getResults() {
-        return results;
+    public MovieResponse(List<Movie> results, int page, int total_results, Dates dates, int total_pages) {
+        this.page = page;
+        this.total_results = total_results;
+        this.dates = dates;
+        this.total_pages = total_pages;
+        this.results = results;
     }
 
-    public void setResults(List<Movie> results) {
+    public MovieResponse(int page, int total_results, int total_pages, List<Movie> results) {
+        this.page = page;
+        this.total_results = total_results;
+        this.total_pages = total_pages;
         this.results = results;
     }
 
@@ -44,11 +48,27 @@ public class MovieResponse {
         this.total_results = total_results;
     }
 
+    public Dates getDates() {
+        return dates;
+    }
+
+    public void setDates(Dates dates) {
+        this.dates = dates;
+    }
+
     public int getTotal_pages() {
         return total_pages;
     }
 
     public void setTotal_pages(int total_pages) {
         this.total_pages = total_pages;
+    }
+
+    public List<Movie> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Movie> results) {
+        this.results = results;
     }
 }
