@@ -4,10 +4,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
+
 
 import com.example.ak.movie_app.fragments.MovieFragment_tab1;
 import com.example.ak.movie_app.fragments.MovieFragment_tab2;
 import com.example.ak.movie_app.fragments.MovieFragment_tab3;
+
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -24,17 +27,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.d("in", "viewpageradapter getitem: "+ position);
         switch (position){
-            case 0:
-                return new MovieFragment_tab1();
+            case 0:  return new MovieFragment_tab1();
+            case 1: return new MovieFragment_tab2();
+            case 2: return new MovieFragment_tab3();
 
-            case 1:
-                return new MovieFragment_tab2();
-
-            case 2:
-                return new MovieFragment_tab3();
-                default:
-                    return null;
+            default: return null;
         }
     }
 
