@@ -30,7 +30,7 @@ public class Movie implements Parcelable{
     @SerializedName("original_title")
     private String original_title;
     @SerializedName("genre_ids")
-    private List<Integer> genre_ids = new ArrayList<Integer>();
+    private List<Integer> genre_ids = new ArrayList<>();
     @SerializedName("backdrop_path")
     private String backdrop_path;
     @SerializedName("adult")
@@ -160,13 +160,7 @@ public class Movie implements Parcelable{
     }
 
     public String getPoster_path() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(base_url_image);
-        sb.append(image_size);
-        sb.append(poster_path);
-        String image_finalPath = sb.toString();
-        return image_finalPath;
-
+       return poster_path;
     }
 
     public void setPoster_path(String poster_path) {

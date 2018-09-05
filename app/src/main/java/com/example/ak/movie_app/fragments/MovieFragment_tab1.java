@@ -31,7 +31,6 @@ public class MovieFragment_tab1 extends Fragment{
 
     private OnListFragmentInteractionListener mListener;
     private MyMovieRecyclerViewAdapter adapter;
-
     private static List<Movie> movies_list = new ArrayList<>() ;
 
     public MovieFragment_tab1() { }
@@ -48,7 +47,6 @@ public class MovieFragment_tab1 extends Fragment{
     }
 
     private void fetchData() {
-
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
         Call<MovieResponse> callNowPlaying = apiInterface.getNowPlayingMovies(BuildConfig.APIKEY);
         callNowPlaying.enqueue(new Callback<MovieResponse>() {

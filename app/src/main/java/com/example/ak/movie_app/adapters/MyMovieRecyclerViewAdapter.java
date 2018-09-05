@@ -37,7 +37,13 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.title.setText(movies_list.get(position).getTitle());
-        Picasso.get().load(movies_list.get(position).getPoster_path()).into(holder.image);
+        String base_url_image = "https://image.tmdb.org/t/p/";
+        String poster_size = "w185";
+        StringBuilder sb = new StringBuilder();
+        sb.append(base_url_image);
+        sb.append(poster_size);
+        sb.append(movies_list.get(position).getPoster_path());
+        Picasso.get().load(sb.toString()).into(holder.image);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +51,10 @@ public class MyMovieRecyclerViewAdapter extends RecyclerView.Adapter<MyMovieRecy
                 Intent intent = new Intent(mContext, DetailedMoviesActivity.class);
                 intent.putExtra("image_url", movies_list.get(position).getPoster_path());
                 intent.putExtra("title", movies_list.get(position).getTitle());
+                intent.putExtra("overview", movies_list.get(position).getOverview());
+                intent.putExtra("voteAverage", movies_list.get(position).getVote_average());
+                intent.putExtra("releaseDate",movies_list.get(position).getRelease_date());
+                intent.putExtra("backdrop",movies_list.get(position).getBackdrop_path());
                 mContext.startActivity(intent);
 
             }
